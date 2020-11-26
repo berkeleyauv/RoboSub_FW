@@ -1,0 +1,9 @@
+{
+"target_overrides": {
+    "NUCLEO_F091RC": {
+        "target.clock_source": "USE_PLL_HSI",
+        "target.macros_add": ["TARGET_STM32F091RC"],
+        "platform.callback-nontrivial": true
+    }
+}
+}

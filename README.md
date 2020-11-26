@@ -18,9 +18,9 @@ Select a target and click "Build" to check that everything worked.
 
 If you find a library online that you want to use, don't use Mbed Studio's builtin method! Instead add it as a submodule to our repo and symlink it.
 
-	git submodule add <link to library's git>
-	cd <Project Folder>
-	ln -s ../libs/<Library Folder> <Library Folder>
+	git submodule add <link to library's git> libs/<Library Name>
+	cd <Project Name>
+	ln -s ../libs/<Library Name> <Library Name>
 
 You can also optionally git checkout the branch/commit you want (from within the library's folder).
 
@@ -28,8 +28,8 @@ You can also optionally git checkout the branch/commit you want (from within the
 
 If you're adding support for something new, first check the libs/ folder to see if we already added it. If it exists, use a relative symlink to add it to your project.
 
-	cd <Project Folder>
-	ln -s ../libs/<Library Folder> <Library Folder>
+	cd <Project Name>
+	ln -s ../libs/<Library Name> <Library Name>
 
 If it's not there, it's time to make your own! Add it to the libs/ folder (as a new folder) so others can use it. Symlink it like above. Put all of your .h and .cpp files for your library in this new folder.
 
@@ -37,3 +37,8 @@ If it's not there, it's time to make your own! Add it to the libs/ folder (as a 
 
 If a new version of Mbed or one of the libraries we use comes out, you can update it as follows:
 
+	cd libs/<Library Name>
+	git fetch
+	git checkout <tag/branch/commit (probs master)>
+
+Keep in mind new versions can break things, so double check this new version is fully functional before committing.

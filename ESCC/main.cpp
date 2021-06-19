@@ -2,8 +2,10 @@
 
 #include "F091_override.h"
 
+#define ID 69
+
 // Debug
-DigitalOut led(PC_13, 1);
+DigitalOut led(PC_13);
 
 // disable HSE in mbed_app.json for these to work
 DigitalIn but(PF_1, PullUp);
@@ -27,11 +29,13 @@ EventQueue queue;
 
 void rxCAN(CANMessage msg) {
     // low speed CAN code here
-    printf("rcvd msg! id: %d len: %d rtr: %d ide: %d data: ", msg.id, msg.len, msg.type, msg.format);
-    for (int i = 0; i < msg.len; i++) {
-        printf("%c", msg.data[i]);
+    if (msg.id == ID) {
+        // TODO add command to reinit esc
+        if (msg.len == 2) {
+            uint16_t c = msg.data[1] << 8 | msg.data[0]; // little endian
+            esc.pulsewidth_us(c);
+        }
     }
-    printf("\n");
 }
 
 void rxIrq() {
@@ -44,14 +48,15 @@ int main() {
     esc.period_ms(50);
     esc.pulsewidth_us(1500);
 
+    // TODO init the esc
+
     eventThread.start(callback(&queue, &EventQueue::dispatch_forever));
     can.attach(rxIrq);
 
     while (true) {
-        led = !led;
         float i = (curr.read() - 0.5) * 75;
-        printf("Current: %.3f\n", i);
-        ThisThread::sleep_for(500ms);
+        printf("%.3f\n", i);
+        ThisThread::sleep_for(50ms);
     }
 }
 

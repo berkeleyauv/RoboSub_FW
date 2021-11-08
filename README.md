@@ -1,11 +1,11 @@
-# URAB_MATE_FW
-MATE Firmware for Underwater Robotics at Berkeley (UR@B)
+# RoboSub_FW
+Firmware for Underwater Robotics at Berkeley (UR@B)
 
 ## How to Use
 
 For Windows users, make sure that your Git installation supports symlinks. Also, either run Git with admin privileges or run Windows in Developer Mode. For non-Windows users, ignore this line you're good.
 
-	git clone --recursive https://github.com/dragonlock2/URAB_MATE_FW.git
+	git clone --recursive https://github.com/berkeleyauv/RoboSub_FW.git
 
 Install [Mbed Studio](https://os.mbed.com/studio/). Switch workspaces to this repo. Select the correct "Active Program" and "Target" to match your needs.
 
@@ -13,7 +13,7 @@ If you're a terminal person, you can also use Mbed CLI tools to do everything.
 
 ## How to Add a New Project
 
-	cd URAB_MATE_FW/
+	cd RoboSub_FW/
 	cp -a Template/ <Project Name> # also copies symlinks
 
 Select a target and click "Build" to check that everything worked.

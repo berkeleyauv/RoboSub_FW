@@ -1,0 +1,65 @@
+/ {
+	soc {
+		can {
+			compatible = "bosch,m-can-base";
+			#address-cells = <1>;
+			#size-cells = <1>;
+			std-filter-elements = <28>;
+			ext-filter-elements = <8>;
+			rx-fifo0-elements = <3>;
+			rx-fifo1-elements = <3>;
+			rx-buffer-elements = <0>;
+			tx-buffer-elements = <3>;
+
+			can1: can@40006400 {
+				compatible = "st,stm32-fdcan";
+				#address-cells = <1>;
+				#size-cells = <0>;
+				reg = <0x40006400 0x400>, <0x4000B400 0x350>;
+				reg-names = "m_can", "message_ram";
+				interrupts = <21 0>, <22 0>;
+				interrupt-names = "LINE_0", "LINE_1";
+				status = "disabled";
+				label = "CAN_1";
+			};
+
+			can2: can@40006800 {
+				compatible = "st,stm32-fdcan";
+				#address-cells = <1>;
+				#size-cells = <0>;
+				reg = <0x40006800 0x400>, <0x4000B800 0x350>;
+				reg-names = "m_can", "message_ram";
+				interrupts = <21 0>, <22 0>;
+				interrupt-names = "LINE_0", "LINE_1";
+				status = "disabled";
+				label = "CAN_2";
+			};
+		};
+	};	
+};
+
+&i2c1 {
+	status = "disabled"; // PB8, PB9
+};
+
+&can1 {
+	status = "okay";
+	pinctrl-0 = <&fdcan1_rx_pb8 &fdcan1_tx_pb9>;
+	bus-speed = <125000>;
+	sjw = <1>;
+	sample-point = <875>;
+	bus-speed-data = <1000000>;
+	sjw-data = <1>;
+	sample-point-data = <875>;
+};
+
+&can2 {
+	// status = "okay"; // shared interrupt, can't enable both yet
+	pinctrl-0 = <&fdcan2_rx_pb5 &fdcan2_tx_pb6>;
+	bus-speed = <125000>;
+	sjw = <1>;
+	sample-point = <875>;
+	bus-speed-data = <1000000>;
+	sjw-data = <1>;
+	sample-point-data = <875>;
+};

@@ -1,102 +1,60 @@
-*.py[cod]
+*.o
+*.a
+*.d
+*.cmd
+*.log
+*.pyc
+*.swp
+*.swo
+*~
+build*/
+!doc/guides/build
+!tests/drivers/build_all
+cscope.*
+.dir
 
-# Distribution dir
-dist
+/*.patch
 
-# MANIFEST file
-MANIFEST
-doxygen_objdb_*
-
-# Private settings
-mbed_settings.py
-
-# Default Build Directory
-.build/
-BUILD/
-.mbed
-venv/
-
-# Mbedls
-.mbedls-mock.lock
-
-# Eclipse Project Files
-.cproject
-.project
-.pydevproject
-
-# C extensions
-*.so
-
-# Packages
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
-
-# Installer logs
-pip-log.txt
-
-# Unit test / coverage reports
-.coverage
-.tox
-nosetests.xml
+# The .cache directory will be used to cache toolchain capabilities if
+# no suitable out-of-tree directory is found.
 .cache
-.hypothesis
 
-# Translations
-*.mo
-
-# Mr Developer
-.mr.developer.cfg
-
-output.txt
-uVision Project/
-
-# Sublime Text Project Files
-*.sublime*
-
-*.bak
-debug.log
-
-# Ignore OS X Desktop Services Store files
+outdir
+outdir-*
+scripts/basic/fixdep
+scripts/gen_idt/gen_idt
+doc/_build
+doc/doxygen
+doc/xml
+doc/html
+doc/boards
+doc/samples
+doc/latex
+doc/themes/zephyr-docs-theme
+sanity-out*
+twister-out*
+bsim_bt_out
+scripts/grub
+doc/reference/kconfig/*.rst
+doc/doc.warnings
+.*project
+.settings
+.envrc
+.vscode
+hide-defaults-note
+venv
+.venv
 .DS_Store
 
-# Orig diff files
-*.orig
+# CI output
+compliance.xml
+_error.types
 
-# PyCharm
-*.idea
-
-# Cscope
-cscope.*
-
-# Ctags
+# Tag files
+GPATH
+GRTAGS
+GTAGS
+TAGS
 tags
 
-# vim swap files
-*.swp
-*~
-
-# Visual Studio Code
-.vscode/
-
-features/FEATURE_BLE/targets/TARGET_CORDIO/stack_backup/
-
-.pytest_cache
-log
-
-# Icetea related file
-test_suite.json
-
-# default delivery dir
-DELIVERY/
-
-# Directory used to clone and build TF-M
-features/FEATURE_EXPERIMENTAL_API/FEATURE_PSA/TARGET_TFM/TARGET_IGNORE/
+.idea

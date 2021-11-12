@@ -1,0 +1,42 @@
+// change pinout for B-G431B-ESC1
+/ {
+	chosen {
+		zephyr,console = &usart2;
+		zephyr,shell-uart = &usart2;
+	};
+};
+
+&green_led {
+	gpios = <&gpioc 6 GPIO_ACTIVE_HIGH>;
+};
+
+&usart2 {
+	pinctrl-0 = <&usart2_tx_pb3 &usart2_rx_pb4>;
+	current-speed = <115200>;
+	status = "okay";
+};
+
+// 8MHz instead of 24MHZ HSE
+&clk_hse {
+	clock-frequency = <DT_FREQ_M(8)>;
+};
+
+&pll {
+	div-m = <2>;
+};
+
+// get PB9
+&i2c1 {
+	status = "disabled";
+};
+
+&can1 {
+	status = "okay";
+	pinctrl-0 = <&fdcan1_rx_pa11 &fdcan1_tx_pb9>;
+	bus-speed = <125000>;
+	sjw = <1>;
+	sample-point = <875>;
+	bus-speed-data = <1000000>;
+	sjw-data = <1>;
+	sample-point-data = <875>;
+};

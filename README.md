@@ -12,7 +12,7 @@ Firmware for Underwater Robotics at Berkeley (UR@B). Based on Zephyr RTOS.
 	```
 3. Clone this repo into the workspace.
 	```
-	git clone https://github.com/berkeleyauv/RoboSub_FW.git
+	git clone --recursive https://github.com/berkeleyauv/RoboSub_FW.git
 	```
 4. Try building and running a test project.
 	```
@@ -20,3 +20,5 @@ Firmware for Underwater Robotics at Berkeley (UR@B). Based on Zephyr RTOS.
 	west build
 	west flash
 	```
+
+To pull new changes, run `git pull --recurse-submodules`.

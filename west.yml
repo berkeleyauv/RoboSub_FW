@@ -1,0 +1,13 @@
+manifest:
+  remotes:
+    - name: dragonlock2
+      url-base: https://github.com/dragonlock2
+
+  projects:
+    - name: zephyrboards
+      remote: dragonlock2
+      revision: 774d5508c6d51ba302f533ca2801160fa1bb5d90
+      import: true
+
+  self:
+    path: RoboSub_FW

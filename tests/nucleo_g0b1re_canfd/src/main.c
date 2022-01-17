@@ -12,14 +12,14 @@ const struct zcan_filter can_filter = {
 	.id_mask = 0
 };
 
-CAN_DEFINE_MSGQ(can_msgq, 16);
+CAN_MSGQ_DEFINE(can_msgq, 16);
 
 int main() {
 	gpio_pin_configure_dt(&led, GPIO_OUTPUT_INACTIVE);
 
 	can_set_mode(can1, CAN_LOOPBACK_MODE);
 	can_set_bitrate(can1, 1000000, 8000000);
-	can_attach_msgq(can1, &can_msgq, &can_filter);
+	can_add_rx_filter_msgq(can1, &can_msgq, &can_filter);
 
 	struct zcan_frame txmsg = {
 		.id = 0x69,

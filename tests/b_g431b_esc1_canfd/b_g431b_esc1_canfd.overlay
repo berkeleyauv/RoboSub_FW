@@ -12,6 +12,7 @@
 
 &usart2 {
 	pinctrl-0 = <&usart2_tx_pb3 &usart2_rx_pb4>;
+	pinctrl-names = "default";
 	current-speed = <115200>;
 	status = "okay";
 };
@@ -33,6 +34,7 @@
 &can1 {
 	status = "okay";
 	pinctrl-0 = <&fdcan1_rx_pa11 &fdcan1_tx_pb9>;
+	pinctrl-names = "default";
 	bus-speed = <125000>;
 	sjw = <1>;
 	sample-point = <875>;

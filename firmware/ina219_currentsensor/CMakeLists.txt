@@ -14,7 +14,7 @@ pico_sdk_init()
 
 # Tell CMake where to find the executable source file
 add_executable(${PROJECT_NAME} 
-    currentsensor.c
+    currentsensor.cpp
 )
 
 # Create map/bin/hex/uf2 files

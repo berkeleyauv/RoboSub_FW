@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Jesse Cheung",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    { "type": "board-ds18b20", "id": "temp1", "top": -77.93, "left": -120.72, "attrs": {} },
+    {
+      "type": "wokwi-logic-analyzer",
+      "id": "logic1",
+      "top": 165.4,
+      "left": -163.75,
+      "rotate": 90,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GP4", "temp1:DQ", "green", [ "h0" ] ],
+    [ "temp1:VCC", "pico:3V3", "red", [ "v19.2", "h192", "v57.6" ] ],
+    [ "temp1:GND", "pico:GND.2", "black", [ "v0" ] ],
+    [ "logic1:D0", "pico:GP4", "green", [ "v0" ] ],
+    [ "pico:GND.2", "logic1:GND", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

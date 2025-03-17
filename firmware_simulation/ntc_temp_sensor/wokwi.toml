@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = "build/temp_sensor.uf2"
+elf = "build/temp_sensor.elf"

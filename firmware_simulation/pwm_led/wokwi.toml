@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = "build/pwm_led.uf2"
+elf = "build/pwm_led.elf"

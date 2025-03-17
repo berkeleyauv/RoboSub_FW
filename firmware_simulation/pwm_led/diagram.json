@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "author": "Jesse Cheung, Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    { "type": "wokwi-logic-analyzer", "id": "logic1", "top": -117.04, "left": -0.98, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 56.8,
+      "left": -209.8,
+      "rotate": 270,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 24,
+      "left": -202.15,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 172,
+      "left": -209.8,
+      "rotate": 270,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 139.2,
+      "left": -202.15,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "logic1:D0", "pico:GP0", "green", [ "h-69.33", "v122.48" ] ],
+    [ "pico:GP1", "logic1:D1", "green", [ "h-78.31", "v-116.42" ] ],
+    [ "pico:GND.8", "led1:C", "black", [ "h-158.4", "v54.45" ] ],
+    [ "led1:A", "r1:2", "gold", [ "h0" ] ],
+    [ "r1:1", "pico:GP0", "gold", [ "h0" ] ],
+    [ "led2:A", "r2:2", "orange", [ "h0" ] ],
+    [ "pico:GP1", "r2:1", "orange", [ "h-150", "v92.85" ] ],
+    [ "led2:C", "pico:GND.8", "black", [ "h278.4", "v-173.2" ] ]
+  ],
+  "dependencies": {}
+}

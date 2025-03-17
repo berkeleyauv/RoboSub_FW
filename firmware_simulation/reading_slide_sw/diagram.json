@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "author": "Jesse Cheung",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 16.05,
+      "left": -25.2,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": 14, "left": 118.3, "attrs": {} },
+    { "type": "wokwi-logic-analyzer", "id": "logic1", "top": 77.15, "left": 163.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:3V3", "sw1:2", "red", [ "h87.6" ] ],
+    [ "pico:GND.8", "sw1:3", "black", [ "h30", "v28.8", "h28.8" ] ],
+    [ "sw1:1", "pico:GP28", "green", [ "v0" ] ],
+    [ "logic1:D0", "pico:GP28", "green", [ "h0" ] ],
+    [ "logic1:GND", "pico:GND.6", "black", [ "h-28.8", "v-19.2" ] ]
+  ],
+  "serialMonitor": { "display": "auto", "newline": "lf", "convertEol": false },
+  "dependencies": {}
+}

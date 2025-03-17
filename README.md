@@ -19,3 +19,6 @@ Firmware for Underwater Robotics at Berkeley (UR@B). Based on Zephyr RTOS.
 	```
 
 While we use `west` to manage dependencies, the main repo is still a normal git repo and can be developed as such. If `west.yml` changes, you may need to run `west update` again to update the dependencies.
+
+# Setting up PicoSDK
+You need to setup pico SDK and make sure to declare the `$PICO_SDK_PATH` in ~/.profile 

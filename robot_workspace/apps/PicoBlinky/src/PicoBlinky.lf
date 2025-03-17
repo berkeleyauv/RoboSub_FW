@@ -1,0 +1,32 @@
+/*
+* This is a Blinky example which blinks the on-board LED of the PICO. It
+* works with other boards which has a `led0` device tree alias defined.
+*/
+target C {
+    platform: {
+        name: "Zephyr",
+        board: rpi_pico,
+    },
+    single-threaded: true
+}
+
+preamble {=
+    #include <zephyr/kernel.h>
+    #include <zephyr/drivers/gpio.h>
+    #include <assert.h>
+    #define LED0_NODE DT_ALIAS(led0)
+    static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+=}
+
+main reactor {
+    timer t (0, 300 msec)
+    
+    reaction(startup) {=
+        assert(device_is_ready(led.port));
+        gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
+    =}
+    
+    reaction(t) {=
+        gpio_pin_toggle_dt(&led);
+    =}
+}

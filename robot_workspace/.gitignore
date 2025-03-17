@@ -1,0 +1,17 @@
+application/src-gen
+application/bin
+application/build
+application/include
+
+scripts/__pycache__
+build/
+
+deps/
+
+.venv/
+**/build
+**/src-gen/
+**/include/
+
+
+zephyr-tests/

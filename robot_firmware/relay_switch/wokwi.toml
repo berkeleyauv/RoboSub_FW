@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = "build/relay_sw.uf2"
+elf = "build/relay_sw.elf"

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "author": "Jesse Cheung",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 9.8, "left": 163.2, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 110.4,
+      "left": 172.25,
+      "rotate": 90,
+      "attrs": { "value": "150" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 121.2,
+      "left": 157.4,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "relay1:GND", "pico:GND.7", "black", [ "h-28.8", "v38" ] ],
+    [ "relay1:VCC", "pico:3V3", "red", [ "h-38.4", "v22.35" ] ],
+    [ "relay1:IN", "pico:GP28", "green", [ "h-9.6", "v9.4" ] ],
+    [ "r1:1", "relay1:COM", "red", [ "h115.2", "v-48", "h-39.6" ] ],
+    [ "led1:A", "r1:2", "green", [ "v0", "h19.2" ] ],
+    [ "led1:C", "pico:GND.7", "black", [ "h-18.8", "v-83.25" ] ],
+    [ "relay1:NO", "pico:VBUS", "orange", [ "h1.2", "v27", "h28.8", "v-76.8" ] ]
+  ],
+  "dependencies": {}
+}
